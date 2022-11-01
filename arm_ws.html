@@ -257,7 +257,15 @@
                                     // get trigger
                                     grip = triggerComponent.value;
                                 });
-
+                                let squeezeComponent = motionController.getComponent(xr_ids[1]);//squeeze
+                                squeezeComponent.onButtonStateChangedObservable.add(() => {
+                                    if (squeezeComponent.pressed) {
+                                        buttonPressed = true;
+                                    }
+                                    else {
+                                        buttonPressed = false;
+                                    }
+                                });
                                 let abuttonComponent = motionController.getComponent(xr_ids[3]);//a-button
                                 abuttonComponent.onButtonStateChangedObservable.add(() => {
                                     if (abuttonComponent.pressed) {
@@ -266,12 +274,12 @@
                                 let bbuttonComponent = motionController.getComponent(xr_ids[4]);//b-button
                                 bbuttonComponent.onButtonStateChangedObservable.add(() => {
                                     if (bbuttonComponent.pressed) {
-                                        buttonPressed = true;
+                                        // buttonPressed = true;
                                         // console.log(motionController.pulse(0.5, 2000));
                                     }
                                     else {
-                                        buttonPressed = false;
-                                        old_buttonPressed = false;
+                                        // buttonPressed = false;
+                                        // old_buttonPressed = false;
                                     }
                                 });
                             }
