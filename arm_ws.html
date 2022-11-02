@@ -106,12 +106,15 @@
             }, 1000);
             
             let motionController_right = null;
-            recvonly_haptics.on('message',　(e) => {
+            recvonly_haptics.on('message', (e) => {
                 console.log(new Int8Array(e.data)[0]);
-                if (new Int8Array(e.data)[0] == 0){
-                    motionController_right.pulse(0, 100);
-                }else{
-                    motionController_right.pulse(1, 100);
+                if (motionController_right) {
+                    if (new Int8Array(e.data)[0] == 0){
+                        motionController_right.pulse(0, 100);
+                    }
+                    else {
+                        motionController_right.pulse(1, 100);
+                    }
                 }
             });
             
